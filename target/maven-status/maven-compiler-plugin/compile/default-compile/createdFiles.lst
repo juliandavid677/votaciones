@@ -1,5 +1,4 @@
 com\mycompany\controller\CandidatoBean.class
 com\mycompany\controller\CandidatoMostrarBean.class
 com\mycompany\dto\Candidato.class
-com\mycompany\validation\ValidationFileUpload.class
 com\mycompany\model\CopyFile.class

@@ -30,7 +30,9 @@
                             <p:outputLabel for="cedula" value="Cedula: " />  
                             <h:outputText id="cedula" value="#{candidatoM.cedula}" />
                             <p:outputLabel for="nacimiento" value="Fecha Nacimiento: " />  
-                            <h:outputText id="nacimiento" value="#{candidatoM.fechaNacimiento}" />
+                            <h:outputText id="nacimiento" value="#{candidatoM.fechaNacimiento}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" type="date" />
+                            </h:outputText>
                             <p:outputLabel for="hojaVida" value="Hoja de Vida: " />  
                             <h:outputText id="hojaVida" value="#{candidatoM.hojaVida}" />
                             <p:commandLink title="View Detail" update="@form:votos">

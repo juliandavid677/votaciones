@@ -6,6 +6,9 @@
 package com.mycompany.dto;
 
 import java.util.Date;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 
 /**
  *
@@ -13,12 +16,19 @@ import java.util.Date;
  */
 public class Candidato {
 
+    @NotNull(message = "DEBE CONTENER UN ARCHIVO DE IMAGEN")
     private String foto;
+    
     private String nombre;
+    
     private String apellido;
+    
     private Date fechaNacimiento;
+    
     private Integer cedula;
+    
     private String hojaVida;
+    
     private int voto;
 
     public Candidato() {

@@ -68,31 +68,9 @@ public class CandidatoBean implements Serializable {
     public void saveMessage() {
         String nombreFoto = null;
         FacesContext context = FacesContext.getCurrentInstance();
-        Date fechaalea = new Date();
-        System.out.println("fexhas" + fechaalea + "otra" + this.candidato.getFechaNacimiento());
-        Date fechaAntigua = this.candidato.getFechaNacimiento();
-        LocalDate fechaNueva = fechaAntigua.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        LocalDate otrafechaNueva = fechaalea.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        System.out.println("nuevaFecha " + fechaNueva);
-        System.out.println("nueva Fecha 2 " + otrafechaNueva);
-        Period periodo = Period.between(fechaNueva, otrafechaNueva);
-        System.out.println("esta es la diferencia " + periodo.getYears());
-        Object validaimagen = uploadedFile.equals(this);
-        String valim = validaimagen.toString();
-        System.out.println("Esta es la imagen "+valim);
-        
-        if(valim == null){
-            context.addMessage(null, new FacesMessage("Debe subir una Imagen", "Error" ));
-        }
-        else{
-        int diferencia = periodo.getYears();
-        if(diferencia < 18){
-                context.addMessage(null, new FacesMessage("No puede ser Candidato", "Debe ser mayor de edad" ));
-            }
-        else{
         try {
             File file = new File(uploadedFile.getFileName());
-            System.out.println(file);            
+            System.out.println(file);
             nombreFoto = copyFile.copyFile(file.getName(), this.uploadedFile.getInputstream());
             FacesMessage message = new FacesMessage(
                     "El archivo se ha subido con éxito!");
@@ -104,8 +82,7 @@ public class CandidatoBean implements Serializable {
             System.out.println("ERROR");
         }
         context.addMessage(null, new FacesMessage("Successful", "Your message: " + this.candidato.getNombre()));
-    }
-    }
+
     }
 
     public String main() {

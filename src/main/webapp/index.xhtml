@@ -23,12 +23,15 @@
                     <p:outputLabel for="apellido" value="Apellido:" />   
                     <p:inputText id="apellido" value="#{candidatoBean.candidato.apellido}" required="true" />  
                     <p:outputLabel for="nacer" value="Nacimiento:" />
-                    <p:calendar id="nacer" value="#{candidatoBean.candidato.fechaNacimiento}" locale="de" navigator="true" pattern="yyyy-MMM-dd" />
-
+                    <p:calendar id="nacer" value="#{candidatoBean.candidato.fechaNacimiento}" navigator="true" 
+                                showOn="button" maxdate="#currentDate" required="true">
+                    </p:calendar>
                     <p:outputLabel for="cedula" value="Cedula:" />   
                     <p:inputText id="cedula" value="#{candidatoBean.candidato.cedula}" required="true" />  
                     <p:outputLabel  value="Descripción de la Hoja de Vida:" />   
-                    <p:inputTextarea id="descripcion" value="#{candidatoBean.candidato.hojaVida}" required="true" rows="5" cols="30" counter="display" maxlength="100" counterTemplate="{0} caracteres restantes." autoResize="false" />
+                    <p:inputTextarea id="descripcion" value="#{candidatoBean.candidato.hojaVida}" required="true" rows="5" cols="30" 
+                                     counter="display" maxlength="100" 
+                                     counterTemplate="{0} caracteres restantes." autoResize="false" />
                     <br />
                     <h:outputText id="display" />
                 </h:panelGrid>  
