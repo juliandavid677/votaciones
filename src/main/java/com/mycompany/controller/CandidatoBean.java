@@ -17,8 +17,8 @@ import org.primefaces.model.UploadedFile;
 import com.mycompany.model.CopyFile;
 
 /**
- *
- * @author shhin
+ * @author Julián Parra 
+ * @author Germán García
  */
 @ManagedBean
 @SessionScoped

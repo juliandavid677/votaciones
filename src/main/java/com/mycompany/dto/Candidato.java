@@ -6,8 +6,8 @@ package com.mycompany.dto;
 import java.util.Date;
 
 /**
- * 
- * @author German Garcia
+ * @author Julián Parra 
+ * @author Germán García
  */
 public class Candidato {
 

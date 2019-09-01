@@ -16,8 +16,8 @@ import org.primefaces.event.SelectEvent;
 import org.primefaces.model.chart.PieChartModel;
 
 /**
- *
- * @author shhin
+ * @author Julián Parra 
+ * @author Germán García
  */
 @ManagedBean
 @RequestScoped
