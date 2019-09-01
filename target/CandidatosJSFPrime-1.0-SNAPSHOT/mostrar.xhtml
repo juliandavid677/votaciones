@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:form id="form">
+        <div class="p-grid p-dir-col">
+            <div class="p-col">
+                <p:dataGrid id="tabla" var="candidatoM" value="#{candidatoMostrarBean.candidato.listaCandidato}" columns="3" layout="grid"
+                            rows="12" paginator="true" 
+                            paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                            rowsPerPageTemplate="6,12,16"><font></font>
+                    <font></font>
+                    <f:facet name="header">
+                        Candidatos
+                    </f:facet>
+                    <p:panel header="#{candidatoM.nombre}" style="text-align:center">
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <h:panelGrid style="text-align:center">
+                                <p:graphicImage library="images" name="#{candidatoM.foto}" width="100px" height="100px"/>
+                            </h:panelGrid><font></font>
+                            <p:outputLabel for="nombre" value="Nombre: " /> 
+                            <h:outputText id="nombre" value="#{candidatoM.nombre}" />
+                            <p:outputLabel for="apellido" value="Apellido: " />  
+                            <h:outputText id="apellido" value="#{candidatoM.apellido}" />
+                            <p:outputLabel for="cedula" value="Cedula: " />  
+                            <h:outputText id="cedula" value="#{candidatoM.cedula}" />
+                            <p:outputLabel for="nacimiento" value="Fecha Nacimiento: " />  
+                            <h:outputText id="nacimiento" value="#{candidatoM.fechaNacimiento}" />
+                            <p:outputLabel for="hojaVida" value="Hoja de Vida: " />  
+                            <h:outputText id="hojaVida" value="#{candidatoM.hojaVida}" />
+                            <p:commandLink title="View Detail" update="@form:votos">
+                                <h:outputText value="Votar" style="margin-right:20px;"/>
+                                <f:setPropertyActionListener value="#{candidatoM}" target="#{candidatoMostrarBean.selectCandidato}" />
+                            </p:commandLink>
+
+                        </h:panelGrid>
+                    </p:panel>
+                </p:dataGrid>
+                <div class="p-col">
+                    <h:panelGrid>
+                        <p:chart id="votos" type="pie" model="#{candidatoMostrarBean.pieModel1}" 
+                                 style="width:400px;height:300px" />
+                    </h:panelGrid>
+                </div>
+            </div>
+        </div>
+
+    </h:form>
+</html>
+
