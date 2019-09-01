@@ -17,6 +17,10 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import org.primefaces.model.UploadedFile;
 import com.mycompany.model.CopyFile;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
+import java.util.Date;
 
 /**
  *
@@ -64,18 +68,44 @@ public class CandidatoBean implements Serializable {
     public void saveMessage() {
         String nombreFoto = null;
         FacesContext context = FacesContext.getCurrentInstance();
+        Date fechaalea = new Date();
+        System.out.println("fexhas" + fechaalea + "otra" + this.candidato.getFechaNacimiento());
+        Date fechaAntigua = this.candidato.getFechaNacimiento();
+        LocalDate fechaNueva = fechaAntigua.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate otrafechaNueva = fechaalea.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        System.out.println("nuevaFecha " + fechaNueva);
+        System.out.println("nueva Fecha 2 " + otrafechaNueva);
+        Period periodo = Period.between(fechaNueva, otrafechaNueva);
+        System.out.println("esta es la diferencia " + periodo.getYears());
+        Object validaimagen = uploadedFile.equals(this);
+        String valim = validaimagen.toString();
+        System.out.println("Esta es la imagen "+valim);
+        
+        if(valim == null){
+            context.addMessage(null, new FacesMessage("Debe subir una Imagen", "Error" ));
+        }
+        else{
+        int diferencia = periodo.getYears();
+        if(diferencia < 18){
+                context.addMessage(null, new FacesMessage("No puede ser Candidato", "Debe ser mayor de edad" ));
+            }
+        else{
         try {
             File file = new File(uploadedFile.getFileName());
+            System.out.println(file);            
             nombreFoto = copyFile.copyFile(file.getName(), this.uploadedFile.getInputstream());
             FacesMessage message = new FacesMessage(
                     "El archivo se ha subido con éxito!");
             FacesContext.getCurrentInstance().addMessage(null, message);
             listaCandidato.add(new Candidato(nombreFoto, this.candidato.getNombre(), this.candidato.getApellido(),
                     this.candidato.getFechaNacimiento(), this.candidato.getCedula(), this.candidato.getHojaVida()));
+
         } catch (IOException e) {
             System.out.println("ERROR");
         }
         context.addMessage(null, new FacesMessage("Successful", "Your message: " + this.candidato.getNombre()));
+    }
+    }
     }
 
     public String main() {

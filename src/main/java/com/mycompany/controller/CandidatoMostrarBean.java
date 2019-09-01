@@ -46,7 +46,7 @@ public class CandidatoMostrarBean implements Serializable {
 
     public PieChartModel getPieModel1() {
         for (Candidato listaCandidato1 : this.candidato.getListaCandidato()) {
-            System.out.println(listaCandidato1.getNombre() + "  NOMBRE DE LA LISTA");
+            System.out.println(listaCandidato1.getNombre() + "  NOMBRE DE LA LISTA");            
             pieModel1.set(listaCandidato1.getNombre(), listaCandidato1.getVoto());
         }
         pieModel1.setTitle("Votos");

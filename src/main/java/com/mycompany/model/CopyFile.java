@@ -23,7 +23,7 @@ public class CopyFile {
     private String destination;
 
     public CopyFile() {
-        this.destination = "C:\\Users\\shhin\\Desktop\\CandidatosJSFPrime\\src\\main\\webapp\\resources\\images\\";
+        this.destination = "C:\\Users\\julia\\Desktop\\Votaciones\\votaciones\\src\\main\\webapp\\resources\\images\\";        
     }
 
     public String copyFile(String fileName, InputStream in) {
