@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Clase que copia la imagen cargada
  */
 package com.mycompany.model;
 
@@ -16,16 +14,28 @@ import java.util.Date;
 
 /**
  *
- * @author shhin
+ * @author German Garcia
  */
 public class CopyFile {
 
+    /**
+     * Variable que se encarga de guarda la ruta donde se guarda la imagen
+     */
     private String destination;
 
+    /**
+     * Set para guardar la ruta donde quedaran las imagenes
+     */
     public CopyFile() {
-        this.destination = "C:\\Users\\julia\\Desktop\\Votaciones\\votaciones\\src\\main\\webapp\\resources\\images\\";        
+        this.destination = "C:\\Users\\shhin\\Desktop\\votaciones\\src\\main\\webapp\\resources\\images\\";        
     }
 
+    /**
+     * Metodo donde  se guarda la imagen
+     * @param fileName nombre de la imagen
+     * @param in peso de la imagen
+     * @return enviar nombre de la imagen
+     */
     public String copyFile(String fileName, InputStream in) {
         String enviar = null;
         try {
